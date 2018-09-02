@@ -1,0 +1,41 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "bower-sync": "^0.1.1",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-clean-css": "^3.7.0",
+    "gulp-imagemin": "^3.3.0",
+    "gulp-rigger": "^0.5.8",
+    "gulp-sass": "^3.1.0",
+    "gulp-watch": "^4.3.11"
+  },
+  "devDependencies": {
+    "bower": "^1.8.0",
+    "browser-sync": "^2.18.13",
+    "del": "^3.0.0",
+    "gulp-cssmin": "^0.2.0",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-html-import": "0.0.2",
+    "gulp-htmlmin": "^4.0.0",
+    "gulp-js-minify": "0.0.3",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^3.0.0",
+    "imagemin-pngquant": "^5.0.1",
+    "npm-git-install": "^0.3.0",
+    "uglifycss": "0.0.27"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "npm-git install"
+  },
+  "gitDependencies": {
+    "private-package-name": "git@private.git.server:user/repo.git#revision",
+    "public-package-name": "https://github.com/user/repo.git#revision"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,87 @@
+%section{
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  @include size(100%, 100%);
+  min-height: 100vh;
+  overflow-y: scroll;
+  transform: translate(100%, 0);
+  z-index: 2;
+
+  -webkit-overflow-scrolling: touch;
+
+  @include break-max(laptop-m){ transition: visibility .4s ease, transform .4s ease; }
+  @include break-min(laptop-m){ transition: visibility .7s ease, transform .7s ease; }
+
+  &.active{
+    transform: translate(0, 0);
+
+    @include break-max(laptop-m){ transition: visibility .4s ease, transform .4s ease; }
+    @include break-min(laptop-m){ transition: visibility .7s ease, transform .7s ease; }
+  }
+}
+
+%cv-item{
+	width: 100%;
+	margin-bottom: 60px;
+}
+
+%cv-title{
+  position: relative;
+  width: 100%;
+  @include font(21px, 200, $primary-color, $font-main);
+  letter-spacing: 3px;
+  margin-bottom: 40px;
+
+  @include break-max(mobile-m){
+    padding-left: 55px;
+    margin-bottom: 30px;
+  }
+  @include break-min(mobile-m){
+    font-size: 26px;
+    letter-spacing: 4px;
+    padding-left: 85px;
+  }
+
+  @include break-min(1360px){ font-size: 26px; }
+
+  &:before{
+    position: absolute;
+    content: '';
+    @include size(6px, 6px);
+    top: 50%;
+    left: 0;
+    transform: translate(0, -50%);
+    border: 1px solid $primary-color;
+
+    @include break-min(mobile-m){ @include size(10px, 10px); }
+  }
+
+  &:after{
+    position: absolute;
+    content: '';
+    @include size(38px, 1px);
+    bottom: 0;
+    left: 12px;
+    background-color: $primary-color;
+
+    @include break-min(mobile-m){
+      width: 62px;
+      left: 17px;
+    }
+  }
+}
+
+%cv-subtitle{
+  @include font(14px, 500, $primary-color, $font-main);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+
+  @include break-max(mobile-m){ font-size: 12px; }
+}
+
+%cv-font{
+  @include font(14px, 200, $primary-color, $font-main);
+  letter-spacing: 1px;
+}

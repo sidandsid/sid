@@ -1,0 +1,21 @@
+{
+  "name": "project",
+  "description": "",
+  "main": "index.js",
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "3.*",
+    "normalize.css": "*",
+    "fancybox": "^3.2.5",
+    "svg4everybody": "^2.1.9"
+  },
+  "devDependencies": {}
+}

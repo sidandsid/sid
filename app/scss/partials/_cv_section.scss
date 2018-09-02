@@ -1,0 +1,1026 @@
+.cv-section{
+  @extend %section;
+}
+
+.cv-content{
+  position: absolute;
+  @include size(100%, auto);
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  padding: 0;
+
+  @include break-min(laptop-m){ display: flex; }
+}
+
+.cv-column{
+  padding: 70px 3%;
+
+  &.left{
+   @include break-max(laptop-m){ display: none; }
+   @include break-min(laptop-m){
+     width: 500px;
+     background-color: rgba($bg-color, .4);
+   }
+  }
+
+  &.right{
+    background-color: rgba($bg-color, .92);
+
+    @include break-min(tablet-l){
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    @include break-min(laptop-m){ width: calc(100% - 500px); }
+  }
+}
+
+//PERSONAL DATA
+.data{
+  width: 100%;
+  margin-bottom: 60px;
+
+  @include break-min(tablet-m){
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  @include break-min(tablet-l){ margin-bottom: 40px; }
+
+  &__title{
+    @extend %cv-title;
+  }
+
+  &__list{
+    margin-bottom: 25px;
+
+    &.personal{
+      @include break-max(tablet-m){ margin-bottom: 50px; }
+      @include break-min(tablet-m){ margin-right: 12%; }
+    }
+
+    &.links{
+      margin-top: -7px;
+
+      .data__list-item{
+        @include hover{
+
+          .data__list-icon{
+            fill: $cv-hover;
+            transition: fill .3s linear;
+          }
+
+          .data__list-link{
+            color: $text-hover;
+            transition: .3s linear;
+          }
+        }
+      }
+    }
+  }
+
+  &__list-item{
+    @include flex(row, flex-start);
+    flex-wrap: nowrap;
+    margin-bottom: 10px;
+  }
+
+  &__list-subtitle{
+    @extend %cv-subtitle;
+    margin-right: 10px;
+  }
+
+  &__list-value{
+    @extend %cv-font;
+  }
+
+  &__list-icon{
+    fill: $primary-color;
+    max-width: 22px;
+    max-height: 22px; //for IE
+    margin-right: 10px;
+    transition: fill .3s linear;
+
+    &.email{
+      @include size(18px, 18px);
+    }
+
+    &.phone{
+      @include size(18px, 18px);
+    }
+
+    &.linkedin{
+      min-height: 21px;
+      min-width: 21px;
+      transform: translate(0, -3px);
+    }
+
+    &.github{
+      @include size(22px, 22px);
+      transform: translate(0, -3px);
+    }
+  }
+
+  &__list-link{
+    @extend %cv-font;
+    transition: .3s linear;
+  }
+}
+
+//WORK
+.work{
+  width: 100%;
+  margin-bottom: 60px;
+
+  &__title{
+    @extend %cv-title;
+    margin-bottom: 60px;
+
+    @include break-max(mobile-m){ margin-bottom: 45px; }
+  }
+
+  &__subtitle{
+    @include font(17px, 400, $primary-color, $font-main);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    line-height: 150%;
+    margin-bottom: 7px;
+
+    @include break-max(mobile-m){ font-size: 13px; }
+
+    small{
+      display: block;
+      font-size: 15px;
+
+      @include break-max(mobile-m){ font-size: 12px; }
+    }
+  }
+
+  &__period{
+    display: block;
+    @extend %cv-font;
+    letter-spacing: 2px;
+
+    @include break-max(mobile-m){ font-size: 12px; }
+  }
+
+  &__position-items{
+    position: relative;
+    padding-left: 20px;
+
+    @include break-min(tablet-l){ padding-left: 40px; }
+
+    &:after{
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      background-color: $primary-color;
+
+      @include break-max(tablet-l){ @include size(1px, 100%); }
+      @include break-min(tablet-l){
+        @include size(1px, 0);
+        transition: 3s linear;
+      }
+    }
+
+    &.animated{
+      &:after{
+        @include size(1px, 100%);
+        transition: 3s linear;
+      }
+    }
+  }
+
+  &__position-item{
+    width: 100%;
+    margin: 40px 0;
+  }
+
+  &__position-title{
+    @extend %cv-subtitle;
+    margin: 20px 0;
+  }
+
+  &__position-list{
+    @extend %cv-font;
+
+    a{
+      @extend %cv-font;
+      @include hover-color($text-hover);
+    }
+  }
+
+  &__position-point{
+    position: relative;
+    display: block;
+    line-height: 150%;
+    padding-left: 20px;
+    margin: 0 0 10px 10px;
+
+    &:before{
+      position: absolute;
+      content: '';
+      @include size(7px, 7px);
+      top: 7px;
+      left: 0;
+      background-color: $primary-color;
+    }
+  }
+}
+
+//SKILLS
+.skills{
+  margin-bottom: 60px;
+
+  &.personal{
+    margin-right: 8%;
+  }
+
+  &.technical{
+    width: 100%;
+    margin-bottom: 50px;
+  }
+
+  &__title{
+    @extend %cv-title;
+  }
+
+  &__list{
+    &.technical{
+      width: 100%;
+    }
+
+    &.personal, &.professional{
+      padding-left: 10px;
+    }
+  }
+
+  &__list-item{
+    position: relative;
+
+    &.personal, &.professional{
+      @extend %cv-font;
+      padding-left: 20px;
+      margin-bottom: 10px;
+
+      &:before{
+        position: absolute;
+        content: '';
+        @include size(7px, 7px);
+        top: 50%;
+        left: 0;
+        transform: translate(0, -50%);
+        background-color: $primary-color;
+      }
+    }
+
+    &.technical{
+      @include flex(row, flex-start);
+      margin-bottom: 40px;
+    }
+  }
+
+  &__list-icon{
+    fill: $primary-color;
+
+    &.html, &.css{
+      margin: 0 5px 1px 0;
+
+      @include break-max(mobile-m){ @include size(17px, 17px); }
+      @include break-min(mobile-m){ @include size(19px, 19px); }
+    }
+
+    &.js{
+      margin: 0 7px 2px 0;
+
+      @include break-max(mobile-m){ @include size(15px, 15px); }
+      @include break-min(mobile-m){ @include size(17px, 17px); }
+    }
+
+    &.jquery{
+      margin: 0 6px 2px 0;
+
+      @include break-max(mobile-m){ @include size(16px, 16px); }
+      @include break-min(mobile-m){ @include size(18px, 18px); }
+    }
+
+    &.less{
+      margin: 0 5px 1px 0;
+
+      @include break-max(mobile-m){ @include size(15px, 15px); }
+      @include break-min(mobile-m){ @include size(17px, 17px); }
+    }
+
+    &.scss{
+      margin: 0 5px 2px 0;
+
+      @include break-max(mobile-m){ @include size(16px, 16px); }
+      @include break-min(mobile-m){ @include size(18px, 18px); }
+    }
+
+    &.bootstrap{
+      margin: 0 6px 2px 0;
+
+      @include break-max(mobile-m){ @include size(14px, 14px); }
+      @include break-min(mobile-m){ @include size(17px, 17px); }
+    }
+
+    &.wordpress{
+      margin: 0 6px 1px 0;
+
+      @include break-max(mobile-m){ @include size(17px, 17px); }
+      @include break-min(mobile-m){ @include size(19px, 19px); }
+    }
+  }
+
+  &__subtitle{
+    @extend %cv-subtitle;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+
+    @include break-min(tablet-m){ width: 20%; }
+  }
+
+  &__line{
+    position: relative;
+    display: block;
+    @include size(100%, 15px);
+    background-color: lighten($bg-color, 5%);
+    border-radius: 3px;
+
+    @include break-max(tablet-m){ margin-top: 15px; }
+    @include break-min(tablet-m){ width: 75%; }
+
+    &:before{
+      position: absolute;
+      content: '';
+      display: block;
+      height: 9px;
+      top: 50%;
+      left: 3px;
+      transform: translate(0, -50%);
+      background-color: $primary-color;
+      box-shadow: 0 0 7px 3px rgba($primary-color, .5);
+      border-radius: 3px;
+    }
+
+    &.html{
+      &:before{
+        @include break-max(tablet-l){ width: 75%; }
+      }
+
+      &.animated{
+        &:before{
+          @include animation(skills-html, 1.5s, ease-in-out, 1);
+          @keyframes skills-html{
+            0%{ width: 0; }
+            75%{ width: 77%; }
+            100%{ width: 75%; }
+          }
+        }
+      }
+    }
+
+    &.css{
+      &:before{
+        @include break-max(tablet-l){ width: 60%; }
+      }
+
+      &.animated{
+        &:before{
+          @include animation(skills-css, 1.5s, ease-in-out, 1);
+          @keyframes skills-css{
+            0%{ width: 0; }
+            75%{ width: 63%; }
+            100%{ width: 60%; }
+          }
+        }
+      }
+    }
+
+    &.js{
+      &:before{
+        @include break-max(tablet-l){ width: 7%; }
+      }
+
+      &.animated{
+        &:before{
+          @include animation(skills-js, 1.5s, ease-in-out, 1);
+          @keyframes skills-js{
+            0%{ width: 0; }
+            75%{ width: 10%; }
+            100%{ width: 7%; }
+          }
+        }
+      }
+    }
+
+    &.jquery{
+      &:before{
+        @include break-max(tablet-l){ width: 13%; }
+      }
+
+      &.animated{
+        &:before{
+          @include animation(skills-jquery, 1.5s, ease-in-out, 1);
+          @keyframes skills-jquery{
+            0%{ width: 0; }
+            75%{ width: 16%; }
+            100%{ width: 13%; }
+          }
+        }
+      }
+    }
+
+    &.less{
+      &:before{
+        @include break-max(tablet-l){ width: 34%; }
+      }
+
+      &.animated{
+        &:before{
+          @include animation(skills-less, 1.5s, ease-in-out, 1);
+          @keyframes skills-less{
+            0%{ width: 0; }
+            75%{ width: 38%; }
+            100%{ width: 34%; }
+          }
+        }
+      }
+    }
+
+    &.scss{
+      &:before{
+        @include break-max(tablet-l){ width: 55%; }
+      }
+
+      &.animated{
+        &:before{
+          @include animation(skills-scss, 1.5s, ease-in-out, 1);
+          @keyframes skills-scss{
+            0%{ width: 0; }
+            75%{ width: 59%; }
+            100%{ width: 55%; }
+          }
+        }
+      }
+    }
+
+    &.bootstrap{
+      &:before{
+        @include break-max(tablet-l){ width: 10%; }
+      }
+
+      &.animated{
+        &:before{
+          @include animation(skills-bootstrap, 1.5s, ease-in-out, 1);
+          @keyframes skills-bootstrap{
+            0%{ width: 0; }
+            75%{ width: 13%; }
+            100%{ width: 10%; }
+          }
+        }
+      }
+    }
+
+    &.wordpress{
+      &:before{
+        @include break-max(tablet-l){ width: 21%; }
+      }
+
+      &.animated{
+        &:before{
+          @include animation(skills-wordpress, 1.5s, ease-in-out, 1);
+          @keyframes skills-wordpress{
+            0%{ width: 0; }
+            75%{ width: 24%; }
+            100%{ width: 21%; }
+          }
+        }
+      }
+    }
+  }
+}
+
+//TOOLS
+.tools{
+  width: 100%;
+  margin-bottom: 50px;
+
+  &__title{
+    @extend %cv-title;
+    margin-bottom: 60px;
+  }
+
+  &__list{
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 200px;
+
+    @include break-max(mobile-m){
+      align-items: baseline;
+      justify-content: center;
+    }
+  }
+
+  &__list-item{
+    width: 115px;
+    text-align: center;
+    margin: 0 25px 25px 0;
+
+    @include break-max(tablet-l){ display: block; }
+    @include break-min(tablet-l){ display: none; }
+  }
+
+  &__list-box{
+    position: relative;
+
+    @include break-min(mobile-m){
+      @include flex(row, center);
+      @include size(55px, 55px);
+      margin: 0 auto 15px auto;
+    }
+  }
+
+  &__list-square{
+    position: absolute;
+    @include size(4px, 4px);
+    background-color: transparent;
+
+    &:before, &:after{
+      @include break-min(mobile-m){
+        position: absolute;
+        content: '';
+        background-color: $primary-color;
+      }
+    }
+
+    &:before{
+      @include size(4px, 4px);
+    }
+
+    &.top-left{
+      top: -1px;
+      left: -1px;
+
+      &:before{
+        left: 0;
+        @include animation(top-left-before, 3s, linear, 1);
+        @keyframes top-left-before{
+          0%{ transform: scale(0, 0); }
+          15%{ transform: scale(0, 0); }
+          25%{ transform: scale(1, 1); }
+          60%{ transform: scale(1, 1); }
+          70% { transform: scale(0, 0); }
+          100% { transform: scale(0, 0); }
+        }
+      }
+
+      &:after{
+        @include size(1px, 51px);
+        top: 4px;
+        left: 1px;
+        @include animation(top-left-after, 3s, linear, 1);
+        @keyframes top-left-after{
+          0%{ @include size(1px, 0px); }
+          10%{ @include size(1px, 51px); opacity: 1; }
+          65%{ @include size(1px, 51px); opacity: 0; }
+          100% { @include size(1px, 51px); opacity: 0; }
+        }
+      }
+    }
+
+    &.bottom-left{
+      bottom: -1px;
+      left: -1px;
+
+      &:before{
+        left: 0;
+        @include animation(bottom-left-before, 3s, linear, 1);
+        @keyframes bottom-left-before{
+          0%{ transform: scale(0, 0); }
+          25%{ transform: scale(0, 0); }
+          35%{ transform: scale(1, 1); }
+          70%{ transform: scale(1, 1); }
+          80% { transform: scale(0, 0); }
+          81% { transform: scale(0, 0); }
+          100% { transform: scale(0, 0); }
+        }
+      }
+
+      &:after{
+        @include size(51px, 1px);
+        bottom: 1px;
+        left: 4px;
+        @include animation(bottom-left-after, 3s, linear, 1);
+        @keyframes bottom-left-after{
+          0%{ @include size(0px, 1px); }
+          10%{ @include size(0px, 1px); }
+          20%{ @include size(51px, 1px); opacity: 1; }
+          75%{ @include size(51px, 1px); opacity: 0; }
+          100%{ @include size(51px, 1px); opacity: 0; }
+        }
+      }
+    }
+
+    &.bottom-right{
+      bottom: -1px;
+      right: -1px;
+
+      &:before{
+        right: 0;
+        @include animation(bottom-right-before, 3s, linear, 1);
+        @keyframes bottom-right-before{
+          0%{ transform: scale(0, 0); }
+          35%{ transform: scale(0, 0); }
+          45%{ transform: scale(1, 1); }
+          80%{ transform: scale(1, 1); }
+          90%{ transform: scale(0, 0); }
+          91%{ transform: scale(0, 0); }
+          100% { transform: scale(0, 0); }
+        }
+      }
+
+      &:after{
+        @include size(1px, 51px);
+        bottom: 4px;
+        right: 1px;
+        @include animation(bottom-right-after, 3s, linear, 1);
+        @keyframes bottom-right-after{
+          0%{ @include size(1px, 0px); }
+          20%{ @include size(1px, 0px); }
+          30%{ @include size(1px, 51px); opacity: 1; }
+          85%{ @include size(1px, 51px); opacity: 0; }
+          100%{ @include size(1px, 51px); opacity: 0; }
+        }
+      }
+    }
+
+    &.top-right{
+      top: -1px;
+      right: -1px;
+
+      &:before{
+        right: 0;
+        @include animation(top-right-before, 3s, linear, 1);
+        @keyframes top-right-before{
+          0%{ transform: scale(0, 0); }
+          45%{ transform: scale(0, 0); }
+          55%{ transform: scale(1, 1); }
+          90%{ transform: scale(1, 1); }
+          100% { transform: scale(0, 0); }
+        }
+      }
+
+      &:after{
+        @include size(51px, 1px);
+        top: 1px;
+        right: 4px;
+        @include animation(top-right-after, 3s, linear, 1);
+        @keyframes top-right-after{
+          0%{ @include size(0px, 1px); }
+          30%{ @include size(0px, 1px); }
+          40%{ @include size(51px, 1px); opacity: 1; }
+          95%{ @include size(51px, 1px); opacity: 0; }
+          100%{ @include size(51px, 1px); opacity: 0; }
+        }
+      }
+    }
+  }
+
+  &__list-icon{
+    fill: $primary-color;
+    @include animation(home-box__icon, 3s, linear, 1);
+
+    @keyframes home-box__icon{
+      0%{ opacity: 0; transform: translate(0, 15px); }
+      20%{ opacity: 1; transform: translate(0, 0); }
+      70%{ opacity: 1; transform: translate(0, 0); }
+      100%{ opacity: 1; transform: translate(0, 0); }
+    }
+
+    @include break-max(mobile-m){ margin-bottom: 15px; }
+
+    &.google{
+      @include break-max(mobile-m){ @include size(33px, 33px); }
+      @include break-min(mobile-m){ @include size(29px, 29px); }
+    }
+
+    &.confluence{
+      @include break-max(mobile-m){ @include size(36px, 36px); }
+      @include break-min(mobile-m){ @include size(33px, 33px); }
+    }
+
+    &.trello{
+      @include break-max(mobile-m){ @include size(33px, 33px); }
+      @include break-min(mobile-m){ @include size(29px, 29px); }
+    }
+
+    &.hipchat{
+      @include break-max(mobile-m){ @include size(33px, 33px); }
+      @include break-min(mobile-m){ @include size(29px, 29px); }
+    }
+
+    &.jira{
+      @include break-max(mobile-m){ @include size(38px, 38px); }
+      @include break-min(mobile-m){ @include size(35px, 35px); }
+    }
+
+    &.git{
+      @include break-max(mobile-m){ @include size(42px, 42px); }
+      @include break-min(mobile-m){ @include size(35px, 35px); }
+    }
+
+    &.gulp{
+      @include break-max(mobile-m){ @include size(58px, 58px); }
+      @include break-min(mobile-m){ @include size(40px, 38px); }
+    }
+
+    &.sublime{
+      @include break-max(mobile-m){ @include size(37px, 37px); }
+      @include break-min(mobile-m){ @include size(31px, 31px); }
+    }
+
+    &.phpstorm{
+      @include break-max(mobile-m){ @include size(50px, 50px); }
+      @include break-min(mobile-m){ @include size(41px, 41px); }
+    }
+
+    &.wamp{
+      @include break-max(mobile-m){ @include size(47px, 47px); }
+      @include break-min(mobile-m){ @include size(38px, 38px); }
+    }
+  }
+
+  &__list-subtitle{
+    width: 100%;
+    @extend %cv-subtitle;
+    text-align: center;
+    line-height: 150%;
+
+    small{
+      display: block;
+      font-size: 10px;
+
+      @include ie{ word-break: break-all; }
+      @include break-min(mobile-m){ max-width: 100px; }
+    }
+  }
+}
+
+//EDUCATION
+.education{
+  width: 100%;
+  margin-bottom: 60px;
+
+  &__title{
+    @extend %cv-title;
+  }
+
+  &__subtitle{
+    @extend %cv-subtitle;
+    line-height: 150%;
+    margin-bottom: 10px;
+
+    &:nth-of-type(2){
+      margin-top: 40px;
+    }
+  }
+
+  &__period{
+    display: block;
+    @extend %cv-font;
+    letter-spacing: 2px;
+  }
+
+  &__specialty{
+    display: block;
+    @extend %cv-font;
+    margin-bottom: 10px;
+  }
+}
+
+//LANGUAGES
+.languages{
+  width: 100%;
+  margin-bottom: 60px;
+
+  &__title{
+    @extend %cv-title;
+  }
+
+  &__list{
+    @include break-min(tablet-m){ @include flex(row, flex-start); }
+  }
+
+  &__list-item{
+    margin: 0 25px 15px 0;
+  }
+
+  &__list-subtitle{
+    @extend %cv-subtitle;
+  }
+
+  &__list-value{
+    @extend %cv-font;
+    @extend %cv-font;
+  }
+}
+
+//HOBBIES
+.hobbies{
+  width: 100%;
+  min-height: 170px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-bottom: 50px;
+
+  &__title{
+    display: block;
+    width: 100%;
+    @extend %cv-title;
+  }
+
+  &__item{
+    margin-bottom: 15px;
+
+    @include break-max(tablet-m){ width: 90px; }
+
+    @include break-min(tablet-m){
+      @include size(110px, 105px);
+      margin-right: 25px;
+    }
+
+    @include break-max(tablet-l){ display: block; }
+    @include break-min(tablet-l){ display: none; }
+  }
+
+  &__item-icon{
+    display: block;
+    @include size(45px, 45px);
+    fill: $primary-color;
+    margin: 15px auto;
+    @include animation(hobbies__item, .3s, linear, 1);
+
+    @keyframes hobbies__item{
+      from{
+        transform: translate(0, 10px);
+        opacity: 0;
+      }
+
+      to{
+        transform: translate(0, 0);
+        opacity: 1;
+      }
+    }
+
+    &.plant{
+      @include size(50px, 50px);
+      margin-bottom: 10px;
+    }
+
+    &.swimming{
+      @include size(50px, 50px);
+      margin: 20px auto 5px auto;
+    }
+
+    &.book{
+      height: 55px;
+      margin-bottom: 5px;
+    }
+
+    &.music{
+      margin: 21px auto 9px auto;
+    }
+  }
+
+  &__item-title{
+    position: relative;
+    display: block;
+    @include font(14px, 300, $primary-color, $font-main);
+    letter-spacing: 1.5px;
+    text-align: center;
+    @include animation(hobbies__item, .5s, linear, 1);
+  }
+}
+
+//DOWNLOAD
+.download{
+
+  &__title{
+    width: 100%;
+    @extend %cv-title;
+  }
+
+  &__text{
+    @include font(16px, 200, $primary-color, $font-main);
+    line-height: 140%;
+
+    @include break-max(mobile-m){ font-size: 14px; }
+  }
+
+  &__link{
+    position: relative;
+    color: $primary-color;
+
+    &:after{
+      position: absolute;
+      content: '';
+      @include size(100%, 1px);
+      right: 0;
+      bottom: -2px;
+      left: 0;
+      background-color: $primary-color;
+      margin: 0 auto;
+      transition: transform .3s linear, background-color .3s linear;
+    }
+
+    @include hover{
+      color: $text-hover;
+      transition: color .3s linear;
+
+      &:after{
+        transform: translate(0, 1px);
+        background-color: $cv-hover;
+        transition: transform .3s linear, background-color .3s linear;
+      }
+    }
+  }
+}
+
+//.cv-btn{
+//  position: relative;
+//  @include size(70%, 60px);
+//  max-width: 400px;
+//
+//  @include break-max(tablet-m){ margin: 0 auto; }
+//  @include break-max(tablet-l){ border: 1px solid $primary-color; }
+//
+//  &:before, &:after{
+//    position: absolute;
+//    content: '';
+//    @include size(0, 1px);
+//    background-color: $primary-color;
+//    transition: width .3s linear;
+//  }
+//
+//  &:before{
+//    top: 0;
+//    left: 0;
+//  }
+//
+//  &:after{
+//    bottom: 0;
+//    right: 0;
+//  }
+//
+//  @include hover{
+//    &:before, &:after{
+//      width: 100%;
+//      transition: width .3s linear;
+//    }
+//
+//    .cv-btn__link{
+//      background-color: transparent;
+//      transition: background-color .3s linear;
+//
+//      &:before, &:after{
+//        height: 100%;
+//        transition: height .3s linear;
+//      }
+//    }
+//  }
+//
+//  &__link{
+//    position: relative;
+//    @include flex(row, center);
+//    @include size(100%, 100%);
+//    @include font(14px, 300, $primary-color, $font-main);
+//    text-transform: uppercase;
+//    letter-spacing: 4px;
+//    background-color: rgba($cv-hover, .03);
+//    transition: background-color .3s linear;
+//
+//    &:before, &:after{
+//      position: absolute;
+//      content: '';
+//      @include size(1px, 0);
+//      background-color: $primary-color;
+//      transition: height .3s linear;
+//    }
+//
+//    &:before{
+//      top: 0;
+//      right: 0;
+//    }
+//
+//    &:after{
+//      bottom: 0;
+//      left: 0;
+//    }
+//  }
+//}

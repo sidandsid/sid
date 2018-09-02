@@ -1,0 +1,12 @@
+@import '../../bower_components/normalize.css/normalize';
+
+@import 'partials/helpers/mixins';
+@import 'partials/helpers/variables';
+@import 'partials/helpers/placeholders';
+@import 'partials/helpers/fonts';
+@import 'partials/helpers/global_settings';
+
+@import 'partials/home_section';
+@import 'partials/bio_section';
+@import 'partials/portfolio_section';
+@import 'partials/cv_section';

@@ -1,0 +1,82 @@
+*{
+	box-sizing: border-box;
+
+	&::selection{
+		background-color: #195570;
+	}		
+}
+
+body{
+	max-width: 100%;
+}
+
+h1, h2, h3, h4, h5{
+	margin: 0;
+	cursor: default;
+}
+
+a{
+	text-decoration: none;	
+}
+
+ul, li{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+p, span{
+	margin: 0;
+	cursor: default;	
+}
+
+.global-wrapper{
+	max-width: 1920px;
+	background-color: $bg-color;
+	margin: 0 auto;	
+}
+
+::-webkit-scrollbar{
+	 background-color: lighten($bg-color, 2%);
+	 width: 5px;
+ }
+
+::-webkit-scrollbar-thumb{
+	background-color: $primary-color;
+}
+
+.close-btn{
+	position: absolute;
+	@include size(40px, 40px);
+	top: 0;
+	right: 5px;
+	background-color: transparent;
+	cursor: pointer;
+	z-index: 100;
+
+	&:before, &:after{
+		position: absolute;
+		content: '';
+		width: 18px;
+		height: 3px;
+		background-color: $primary-color;
+		border-radius: 5px;
+		top: 50%;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+		transform: translate(0, -50%) rotate(45deg);
+		transition: background-color .3s;
+	}
+
+	&:after{
+		transform: translate(0, -50%) rotate(-45deg);
+	}
+
+	@include hover{
+		&:before, &:after{
+			background-color: $close-btn-hover;
+			transition: background-color .3s;
+		}
+	}
+}

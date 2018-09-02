@@ -1,0 +1,561 @@
+.portfolio-section{
+  @extend %section;
+  background-color: rgba($bg-color, .9);
+
+  @include break-min(tablet-l){ padding: 200px 5% 250px 5%; }
+}
+
+.portfolio-grid{
+  position: relative;
+
+  @include break-max(tablet-l){ padding: 50px 0; }
+  @include break-min(tablet-l){ padding: 0 1.7%; }
+
+
+  &__title{
+    position: relative;
+    display: block;
+    @include font(32px, 300, $primary-color, $font-main);
+    letter-spacing: 4px;
+
+    @include break-max(tablet-l){
+      width: 80%;
+      padding-left: 90px;
+      margin: 0 auto 50px auto;
+    }
+
+    @include break-min(tablet-l){
+      font-size: 34px;
+      padding-left: 120px;
+      margin-left: 3%;
+      margin-bottom: 65px;
+    }
+
+    &:before{
+      position: absolute;
+      content: '';
+      @include size(10px, 10px);
+      border: 1px solid $primary-color;
+      top: 50%;
+      left: 0;
+      transform: translate(0, -50%);
+
+      @include break-min(tablet-l){ @include size(13px, 13px); }
+    }
+
+    &:after{
+      position: absolute;
+      content: '';
+      @include size(68px, 1px);
+      background-color: $primary-color;
+      bottom: 0;
+      left: 15px;
+
+      @include break-min(tablet-l){
+        left: 24px;
+        width: 85px;
+      }
+    }
+  }
+
+  &__item{
+    position: relative;
+    transition: .6s ease;
+
+    //Moderniz fix for IE
+    &.compat-object-fit{
+      background-size: cover;
+      background-position: center center;
+
+      .portfolio-grid__item-img{ //hide image if object fit is not supported - opacity to 0 for the link area
+        opacity: 0;
+      }
+    }
+
+    @include break-max(tablet-l){
+      width: 80%;
+      box-shadow: 0 0 50px 10px rgba(255, 255, 255, .5);
+      padding: 90px 0 25px 0;
+      margin: 0 auto 85px auto;
+
+      &:last-child{
+        margin-bottom: 50px;
+      }
+    }
+
+    @include break-min(tablet-l){
+      opacity: .85;
+      transition: .6s ease;
+      -webkit-font-smoothing: subpixel-antialiased;
+
+      &:hover{
+        opacity: 1;
+        box-shadow: 0 0 70px 10px rgba(255, 255, 255, .7);
+        z-index: 1;
+        transition: .6s ease;
+
+        .portfolio-grid__item-info{
+          opacity: 1;
+          transition: opacity .5s ease;
+        }
+
+        .portfolio-grid__item-title{
+          transform: translate(0, 0);
+          transition: transform .6s ease;
+        }
+
+        .portfolio-grid__item-lang{
+          transform: translate(0, 0);
+          transition: transform .6s ease;
+          transition-delay: .1s;
+        }
+
+        .portfolio-grid__item-plugin{
+          transform: translate(0, 0);
+          transition: transform .6s ease;
+          transition-delay: .15s;
+        }
+
+        .portfolio-grid__item-src{
+          transform: translate(0, 0);
+          transition: transform .6s ease;
+          transition-delay: .2s;
+        }
+      }
+    }
+
+    &.one{
+      @include break-min(tablet-l){
+        position: absolute;
+        @include size(32%, 300px);
+        top: -70px;
+        right: 3%;
+        box-shadow: 0 0 70px 10px rgba(255, 255, 255, .7);
+
+        &:before{
+          position: absolute;
+          content: '';
+          @include size(110px, 1px);
+          top: 70px;
+          left: -110px;
+          background-color: $primary-color;
+        }
+
+        &:hover{
+          transform: scale(1.03, 1.03);
+          box-shadow: 0 0 70px 12px rgba(255, 255, 255, 1);
+        }
+      }
+    }
+
+    &.two{
+      @include break-min(tablet-l){
+        position: relative;
+        @include size(60.8%, 360px);
+        margin-bottom: 65px;
+
+        &:hover{
+          transform: scale(1.02, 1.02);
+        }
+      }
+    }
+
+    &.three{
+      @include break-min(tablet-l){
+        position: absolute;
+        @include size(44%, 360px);
+        right: 4%;
+        transform: translate(0, -255px);
+
+        &:hover{
+          transform: scale(1.02, 1.02) translate(0, -255px);
+        }
+      }
+    }
+
+    &.four{
+      @include break-min(tablet-l){
+        @include size(45%, 355px);
+        transform: translate(8%, 0);
+
+        &:hover{
+          position: relative;
+          transform: scale(1.03, 1.03) translate(8%, 0);
+        }
+      }
+    }
+
+    &.five{
+      @include break-min(tablet-l){
+        position: absolute;
+        @include size(51.5%, 290px);
+        right: 4%;
+        transform: translate(0, -185px);
+
+        &:hover{
+          transform: scale(1.02, 1.02) translate(0, -185px);
+        }
+      }
+    }
+
+    &.six{
+      @include break-min(tablet-l){
+        @include size(39.7%, 350px);
+        transform: translate(0, 120px);
+        box-shadow: 0 0 70px 10px rgba(255, 255, 255, .7);
+        z-index: 1;
+        margin-bottom: 50px;
+
+        &:before{
+          position: absolute;
+          content: '';
+          @include size(1px, 70px);
+          background-color: $primary-color;
+          top: -70px;
+          right: 0;
+          left: 0;
+          margin: 0 auto;
+        }
+
+        &:hover{
+          transform: scale(1.03, 1.03)  translate(0, 120px);
+        }
+      }
+    }
+
+    &.seven{
+      @include break-min(tablet-l){
+        position: absolute;
+        @include size(47%, 340px);
+        right: 6%;
+        transform: translate(0, -225px);
+        z-index: 1;
+
+        &:hover{
+          transform: scale(1.03, 1.03) translate(0, -225px);
+        }
+      }
+    }
+
+    &.eight{
+      @include break-min(tablet-l){
+        position: absolute;
+        @include size(42%, 335px);
+        transform: translate(14%, 40px);
+        margin-bottom: 70px;
+
+        &:after{
+          position: absolute;
+          content: '';
+          right: 0;
+          bottom: -80px;
+          left: 0;
+          @include size(75%, 1px);
+          background-color: $primary-color;
+          margin: 0 auto;
+        }
+
+        &:hover{
+          transform: scale(1.02, 1.02) translate(14%, 40px);
+        }
+
+        @include ie{
+          position: relative;
+          margin-bottom: 180px;
+        }
+      }
+    }
+
+    &.nine{
+      @include break-min(tablet-l){
+        position: absolute;
+        right: 11%;
+        @include size(35%, 320px);
+        transform: translate(0, 175px);
+        margin-bottom: 100px;
+
+        &:hover{
+          transform: scale(1.02, 1.02) translate(0, 175px);
+        }
+      }
+    }
+  }
+
+  &__item-img{
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    @include size(100%, 100%);
+    object-fit: cover;
+
+    @include break-max(tablet-l){ z-index: -1; }
+
+    &.mobile{ @media screen and (max-width: 640px){ display: block; } }
+    &.tablet-s{ @media screen and (min-width: 641px) and (max-width: 768px){ display: block; } }
+    &.tablet-m{ @media screen and (min-width: 769px) and (max-width: 1023px){ display: block; } }
+    &.desktop-s{ @media screen and (min-width: 1024px) and (max-width: 1500px){ display: block; } }
+    &.desktop-m{ @media screen and (min-width: 1501px){ display: block; } }
+  }
+
+  &__item-info{
+    @include break-max(tablet-l){
+      background-color: rgba($bg-color, .9);
+      padding: 30px 5%;
+    }
+
+    @include break-min(tablet-l){
+      position: absolute;
+      @include size(100%, 100%);
+      background-color: rgba($bg-color, .95);
+      opacity: 0;
+      padding: 60px 15px 0 50px;
+      transition: opacity .5s ease;
+    }
+  }
+
+  &__item-title{
+    @include font(26px, 400, $primary-color, $font-main);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+
+    @include break-min(tablet-l){
+      transform: translate(0, 7px);
+      transition: transform .6s ease;
+    }
+  }
+
+  &__item-lang{
+    @include font(18px, 300, $primary-color, $font-main);
+    text-transform: uppercase;
+    line-height: 150%;
+    letter-spacing: 1.5px;
+    margin-bottom: 20px;
+
+    @include break-min(tablet-l){
+      transform: translate(0, 10px);
+      transition: transform .6s ease;
+    }
+  }
+
+  &__item-plugin{
+    @include font(16px, 300, $primary-color, $font-main);
+    line-height: 140%;
+    letter-spacing: 1.5px;
+    margin-bottom: 25px;
+
+    span{
+      display: block;
+      font-weight: 500;
+      text-transform: uppercase;
+      margin-bottom: 7px;
+    }
+
+    @include break-min(tablet-l){
+      transform: translate(0, 10px);
+      transition: transform .6s ease;
+    }
+  }
+
+  &__item-src{
+    @include flex(row, flex-start);
+
+    @include break-min(tablet-l){
+      transform: translate(0, 7px);
+      transition: transform .6s ease;
+    }
+  }
+
+  &__item-link{
+    @include font(14px, 300, $primary-color, $font-main);
+    letter-spacing: 1px;
+    margin: 0 35px 15px 0;
+
+    @include break-min(tablet-l){
+      position: relative;
+      display: block;
+
+      &:hover{
+        color: $text-hover;
+        transition: .3 ease;
+
+        .portfolio-grid__item-icon{
+          fill: $portfolio-hover;
+          transition: .3 ease;
+        }
+      }
+    }
+  }
+
+  &__item-icon{
+    fill: $primary-color;
+
+    @include break-max(tablet-l){ @include size(28px, 28px); }
+    @include break-min(tablet-l){ @include size(20px, 20px); }
+    @include break-min(laptop-m){ @include size(28px, 28px); }
+
+    &.github{
+      transform: translate(0, 6px);
+      margin-right: 8px;
+    }
+
+    &.front{
+      margin-right: 10px;
+
+      @include break-max(tablet-l){  transform: translate(0, 8px); }
+      @include break-min(tablet-l){  transform: translate(0, 6px); }
+      @include break-max(laptop-m){  transform: translate(0, 8px); }
+    }
+
+    &.arrow{
+      @include size(20px, 20px);
+      transform: translate(-5px, 6px);
+    }
+  }
+
+  &__item-number{
+    display: block;
+    @include flex(row, center);
+    @include font(18px, 300, $primary-color, $font-main);
+    background-color: $bg-color;
+    border: 1px solid $primary-color;
+    z-index: 100;
+
+    @include break-max(tablet-m){ @include size(35px, 35px); }
+
+    @include break-min(tablet-m){
+      @include size(50px, 50px);
+      font-size: 22px;
+    }
+
+    @include break-max(tablet-l){ transform: translate(-18px, -40px); }
+
+    @include break-min(tablet-l){
+      position: absolute;
+
+      &:after{
+        position: absolute;
+        content: '';
+        background-color: $primary-color;
+      }
+
+      &.one{
+        top: -25px;
+        right: 15%;
+
+        &:after{
+          @include size(2px, 10px);
+          top: 100%;
+          right: 0;
+          left: 0;
+          margin: 0 auto;
+        }
+      }
+
+      &.two{
+        top: 80px;
+        left: -25px;
+
+        &:after{
+          @include size(10px, 2px);
+          top: 0;
+          right: -10px;
+          bottom: 0;
+          margin: auto 0;
+        }
+      }
+
+      &.three{
+        top: 95px;
+        right: -25px;
+
+        &:after{
+          @include size(10px, 2px);
+          top: 0;
+          bottom: 0;
+          left: -10px;
+          margin: auto 0;
+        }
+      }
+
+      &.four{
+        top: -25px;
+        right: 25%;
+
+        &:after{
+          @include size(2px, 10px);
+          top: 100%;
+          right: 0;
+          left: 0;
+          margin: 0 auto;
+        }
+      }
+
+      &.five{
+        top: -25px;
+        right: 35%;
+
+        &:after{
+          @include size(2px, 10px);
+          top: 100%;
+          right: 0;
+          left: 0;
+          margin: 0 auto;
+        }
+      }
+
+      &.six{
+        top: -25px;
+        left: 15%;
+
+        &:after{
+          @include size(2px, 10px);
+          top: 100%;
+          right: 0;
+          left: 0;
+          margin: 0 auto;
+        }
+      }
+
+      &.seven{
+        top: 65%;
+        right: -25px;
+
+        &:after{
+          @include size(10px, 2px);
+          top: 0;
+          bottom: 0;
+          left: -10px;
+          margin: auto 0;
+        }
+      }
+
+      &.eight{
+        left: -25px;
+        bottom: 15%;
+
+        &:after{
+          @include size(10px, 2px);
+          top: 0;
+          bottom: 0;
+          right: -10px;
+          margin: auto 0;
+        }
+      }
+
+      &.nine{
+        left: 25%;
+        bottom: -25px;
+
+        &:after{
+          @include size(2px, 10px);
+          top: -10px;
+          right: 0;
+          left: 0;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+}
